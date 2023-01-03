@@ -1,4 +1,4 @@
-{
+[{
   "articleStyle": 2,
   "customOrder": 362,
   "enableJs": true,
@@ -24,3 +24,4 @@
   "sourceUrl": "https://www.subaibaiys.com",
   "style": "#tab{\nheight:40px;\nmargin-bottom:8px;\n}\n\n.dz {\npadding:5px 0;\noverflow:scroll;\nbackground:#1C1B1E;color:#D3D3D3;;\n}\n\nul{\nmargin:0;\npadding:0;\n}\n\n#tab li {\nfont-size:15px;\nlist-style:none;\nfloat:left;\nheight:30px;\nmargin-right:5px;\ncolor:#D3D3D3;\nline-height:25px;\n}\n\n#tab li.active {\ncolor:#FF8C00;\nborder-bottom:3px solid #FF8C00;\n}\n\nbutton{\noutline:none;\nheight:35px; \nborder:3px solid #1C1B1E ;\nmargin:5px;\nborder-radius:8px;\nmargin-bottom:8px;\nbackground:#1C1B1E;color:#A9A9A9;\nvertical-align:middle; \nwidth:24%;\noverflow:scroll\n}\n\nbutton.upBtn{\nborder:1px solid #FF8C00 ;\nbackground-color:#555555; \n}\n\nbody{\nmargin:0;\nbackground-color: #333333; \n}"
 }
+]
