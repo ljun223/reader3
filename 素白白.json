@@ -17,7 +17,7 @@
   "rulePubDate": "{{@@class.hdinfo@text}} {{@@class.rating@text}}\n{{@@class.nostag@text}}",
   "ruleTitle": "class.dytit@text",
   "singleUrl": false,
-  "sortUrl": "首页::https://www.subaibaiys.cm/\n搜索::https://www.subaibaiys.com/search?q={{source.getVariable()}}&f=_all%p={{page}}\n电影::https://www.subaibaiys.com/new-movie/page/{{page}}\n电视剧::https://www.subaibaiys.com/dianshiju/page/{{page}}\n热门电影::https://www.subaibaiys.com/hot-month/page/{{page}}\n动漫电影::https://www.subaibaiys.com/movie_bt_series/dongmandy/page/{{page}}\n高分电影::https://www.subaibai.com/gf/page/{{page}}\n香港经典电影::https://www.subaibaiys.com/movie_bt_series/xianggangdy/page/{{page}}\n",
+  "sortUrl": "首页::https://www.subaibaiys.com/\n搜索::https://www.subaibaiys.com/search?q={{source.getVariable()}}&f=_all%p={{page}}\n电影::https://www.subaibaiys.com/new-movie/page/{{page}}\n电视剧::https://www.subaibaiys.com/dianshiju/page/{{page}}\n热门电影::https://www.subaibaiys.com/hot-month/page/{{page}}\n动漫电影::https://www.subaibaiys.com/movie_bt_series/dongmandy/page/{{page}}\n高分电影::https://www.subaibai.com/gf/page/{{page}}\n香港经典电影::https://www.subaibaiys.com/movie_bt_series/xianggangdy/page/{{page}}\n",
   "sourceComment": "",
   "sourceGroup": "影视",
   "sourceIcon": "https://www.subaibaiys.com/wp-content/uploads/2019/07/8486f5ef0a1060.ico",
