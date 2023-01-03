@@ -5,6 +5,7 @@
   "enableJs": true,
   "enabled": true,
   "enabledCookieJar": true,
+  "header": "{\"User-Agent\": \"Mozilla/5.0 (Linux; Android 12; 2112123AC) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Mobile Safari/537.36\",\"Referer\":\"https://yanetflix.com\"}",
   "lastUpdateTime": 0,
   "loadWithBaseUrl": true,
   "ruleArticles": "class.module-item||class.module-card-item",
