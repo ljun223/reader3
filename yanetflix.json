@@ -1,0 +1,26 @@
+[
+{
+  "articleStyle": 2,
+  "customOrder": 0,
+  "enableJs": true,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "lastUpdateTime": 0,
+  "loadWithBaseUrl": true,
+  "ruleArticles": "class.module-item||class.module-card-item",
+  "ruleContent": "<html>\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no\"/>\n<script src=\"//cdn.staticfile.org/jquery/2.2.4/jquery.min.js\"></script>\n<script src=\"//cdn.staticfile.org/dplayer/1.25.0/DPlayer.min.js\"></script>\n<link rel =\"stylesheet\" href = \"//cdn.staticfile.org/dplayer/1.25.0/DPlayer.min.css\">\n</head>\n\n<div class =\"dz\" width=\"100%\"></div>\n\n<div class=\"dplayer\" id=\"dplayer\" style=\"width:100%;height:300\"></div>\n\n<div id=\"tab\"><ul>{{@@class.module-tab-item tab-item@span@html##span##a}}<a>内容简介</a></ul></div>\n<br>\n<br>\n{{@@class.module-play-list-content@html}}\n\n<ul class=\"module-play-list-content jianjie\" ><img src=\"{{@@class.module-info-poster@img@data-original}}\">{{@@class.module-info-introduction@span@html}}</ul>\n\n<script>\nfunction video(url){\n$.get(url,function(result){\njson=result.match(/var player.*?=(\\{.*?\\})</)[1];\nvar src=JSON.parse(json).url;\nsrc=decodeURIComponent(atob(src));\n\tvar path=\"https://yanetflix.com/static/js/playerconfig.js\";\n$.get(path,function(js){\n\tjs=js.match(/player_list=(\\{.*?\\}),MacPlayerConfig/)[1]\n\tfrom=JSON.parse(json).from;\n\tsrc=JSON.parse(js)[from].parse+src;\niframe= '<iframe width=\"100%\" height=\"100%\" src=\"'+src+'\" frameborder=\"0\" border=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\" allowfullscreen=\"allowfullscreen\" mozallowfullscreen=\"mozallowfullscreen\" msallowfullscreen=\"msallowfullscreen\" oallowfullscreen=\"oallowfullscreen\" webkitallowfullscreen=\"webkitallowfullscreen\"></iframe>';\n\n$(\".dplayer\").html(iframe)\n\n$(\".dz\").html(src);\n})\n});\n}\n\n(function(){\n$(\".module-play-list-content\").hide();\n$(\".module-play-list-content:eq(0)\").show();\n$(\"li:eq(0)\").addClass(\"active\")})();\n\n$(\"button\").ready(function(){\nurl=$(this).val();\n$(\"button:first\").addClass(\"upBtn\");\nvideo(url);\n});\n\n$(\"button\").click(function(){\n$(\"button\").removeClass(\"upBtn\");\n$(this).addClass(\"upBtn\");\nurl='https://yanetflix.com'+$(this).val();\nvideo(url);\n});\n\n$(\"li\").click(function(){\n$(\"li\").removeClass(\"active\");\n$(this).addClass(\"active\");\nindex=$(this).index();\n$(\".module-play-list-content\").hide();\n$(\".module-play-list-content:eq(\"+index+\")\").show();\n})\n</script>\n</html>\n\n@js:\nresult = result.replace(/<a.*?href=\"([^\"]+)\".*?><span>([^<]+)<\\/span><\\/a>/g,'<button value=\"$1\">$2</button>').replace(/<a/g,'<li').replace(/<\\/a>/g,'</li>')\n",
+  "ruleImage": "img@data-original",
+  "ruleLink": "a.0@href",
+  "ruleNextPage": "text.下一页@href",
+  "rulePubDate": "class.module-item-cover@text||class.module-info-item-content@text",
+  "ruleTitle": "a@title||strong@text",
+  "singleUrl": false,
+  "sortUrl": "搜索::https://yanetflix.com/vodsearch/-------------.html?wd={{source.getVariable()}}\n电影::https://yanetflix.com/vodshow/dianying-----------.html\n电视剧::https://yanetflix.com/vodshow/lianxuju-----------.html\n综艺::https://yanetflix.com/vodshow/zongyi-----------.html\n动漫::https://yanetflix.com/vodshow/dongman-----------.html",
+  "sourceComment": "",
+  "sourceGroup": "影视",
+  "sourceIcon": "https://ugc.hitv.com/3/22040215100116D5902FA5F85F30A2245E0DAAAAFMjky/uyu3xI0.png",
+  "sourceName": "鸭奈飞",
+  "sourceUrl": "https://yanetflix.com/",
+  "style": "img {\nfloat:left;margin-right:30px;\nwidth:150px}\n.jianjie{\n\t\n\tcolor:#D3D3D3\n\t}\n#tab{\nheight:40px;\nmargin-bottom:8px;\n}\n\n.dz {\npadding:5px 0;\noverflow:scroll;\nbackground:#1C1B1E;color:#D3D3D3;\n}\n\nul{\nmargin:0;\npadding:0;\n}\n\n#tab li {\nfont-size:15px;\nlist-style:none;\nfloat:left;\nheight:30px;\nmargin-right:5px;\ncolor:#D3D3D3;\nline-height:25px;\n}\n\n#tab li.active {\ncolor:#FF8C00;\nborder-bottom:3px solid #FF8C00;\n}\n\nbutton{\noutline:none;\nheight:35px; \nborder:3px solid #1C1B1E ;\nborder-radius:8px;\nmargin-bottom:8px;\nbackground:#1C1B1E;color:#A9A9A9;\nvertical-align:middle; \nwidth:24%;\n}\n\nbutton.upBtn{\nborder:1px solid #FF8C00 ;\nbackground-color:#555555; \n}\n\nbody{\nmargin:0;\nbackground-color: #333333; \n}"
+}
+]
