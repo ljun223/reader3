@@ -7,8 +7,8 @@ function ttos(data){
   a=""
   for(var i=0;i<length;i++){
     var c = data.charAt(i);
-		  var p = zh_t.indexOf(c);
-		  a += p < 0 ? c : zh_s.charAt(p);
+    var p = zh_t.indexOf(c);
+    a += p < 0 ? c : zh_s.charAt(p);
   }
   return a
 }
@@ -18,8 +18,8 @@ function stot(data){
   a=""
   for(var i=0;i<length;i++){
     var c = data.charAt(i);
-		  var p = zh_s.indexOf(c);
-		  a += p < 0 ? c : zh_t.charAt(p);
+    var p = zh_s.indexOf(c);
+    a += p < 0 ? c : zh_t.charAt(p);
   }
   return a
 }
