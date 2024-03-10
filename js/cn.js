@@ -3,25 +3,23 @@ var zh_t = '皚藹礙愛翺襖奧壩罷擺敗頒辦絆幫綁鎊謗剝飽寶報�
 
 //繁转简
 function ttos(data){
-length=data.length;
-a=""
-for(var i=0;i<length;i++){
-        var c = data.charAt(i);
-        console.log(c)
-		var p = zh_t.indexOf(c);
-		a += p < 0 ? c : zh_s.charAt(p);
-}
-return a
+  length=data.length;
+  a=""
+  for(var i=0;i<length;i++){
+    var c = data.charAt(i);
+		  var p = zh_t.indexOf(c);
+		  a += p < 0 ? c : zh_s.charAt(p);
+  }
+  return a
 }
 //簡轉繁
 function stot(data){
-length=data.length;
-a=""
-for(var i=0;i<length;i++){
-        var c = data.charAt(i);
-        console.log(c)
-		var p = zh_s.indexOf(c);
-		a += p < 0 ? c : zh_t.charAt(p);
-}
-return a
+  length=data.length;
+  a=""
+  for(var i=0;i<length;i++){
+    var c = data.charAt(i);
+		  var p = zh_s.indexOf(c);
+		  a += p < 0 ? c : zh_t.charAt(p);
+  }
+  return a
 }
