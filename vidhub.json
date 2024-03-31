@@ -17,7 +17,7 @@
   "ruleTitle": ".module-item-title@text||h3@text",
   "singleUrl": false,
   "sortUrl": "搜索::http://vidhub1.cc/vodsearch/\n电影::/vodshow/1-----------.html\n连续剧::/vodshow/2-----------.html\n综艺::/vodshow/3-----------.html\n动漫::/vodshow/4-----------.html",
-  "sourceComment": "版本：1.0.0\n网址发布页：\nhttps://vidhub.link/",
+  "sourceComment": "版本：1.0.1\n网址发布页：\nhttps://vidhub.link/",
   "sourceIcon": "http://vidhub1.cc/mxstatic/image/logo2.png",
   "sourceName": "vidhub",
   "sourceUrl": "http://vidhub1.cc",
