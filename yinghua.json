@@ -1,4 +1,4 @@
-{
+[{
   "articleStyle": 2,
   "customOrder": -101073,
   "enableJs": true,
@@ -22,4 +22,4 @@
   "sourceName": "樱花动漫",
   "sourceUrl": "http://www.iyinghua.io",
   "style": ".button{outline:none;width:90px; height:35px; border-radius: 10px; border:3px solid #fff; background-color: #E9E4E0; }\n.upBtn{outline:none;width:90px; height:35px; border-radius: 10px; border:3px solid #fff; background-color: #ffffcc; }\nimg {\nfloat:left;margin-right:30px;\nwidth:150px}\n\n#intro{float:left;\nborder-style:double;\nborder-color:black;padding:5px;\nborder-width:5px}\n#html{margin-top:20px}\n#dxb{border-radius: 1px; border:3px solid #fff; background-color: #E9E4E0;outline:none}\n\nul{\nborder-bottom:0;\n\theight:40px;\n}\nli {\n\tlist-style:none;\n\tfloat:left;\n\theight:34px;\n\tmargin-right:20px;\n\tcolor:#909090;\n\tline-height:34px;\n}\nli.active {\n\tcolor:#50B400;\n\tborder-bottom:3px solid #50B400;\n}\n#dd {\npadding:5px 0;\noverflow:scroll;\nbackground-color:#E9E4E0;\n}\nhtml{width:100%}"
-}
+}]
