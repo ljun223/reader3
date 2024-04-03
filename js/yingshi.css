@@ -32,20 +32,20 @@ border-bottom:3px solid #FF8C00;
 button{
 outline:none;
 height:35px; 
-border:3px solid #1C1B1E ;
+border:3px solid #e9e4e0;
 border-radius:8px;
 margin-bottom:8px;
-background:#1C1B1E;color:#A9A9A9;
+background:#e9e4e0;color:black;
 vertical-align:middle; 
 width:24%;
 }
 
 button.upBtn{
-border:1px solid #FF8C00 ;
-background-color:#555555; 
+border:1px solid #fff;
+background-color:#ffffcc; 
 }
 
 body{
 margin:0;
-background-color: #333333; 
+background-color: #f0f0f0; 
 }
