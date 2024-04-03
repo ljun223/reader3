@@ -3,10 +3,10 @@ height:40px;
 margin-bottom:8px;
 }
 
-.dz,.ddd{
+.dz,.ddd {
 padding:5px 0;
 overflow:scroll;
-background:#1C1B1E;color:#D3D3D3;
+background:#f0f0f0;color:black;
 }
 
 ul{
@@ -20,7 +20,7 @@ list-style:none;
 float:left;
 height:30px;
 margin-right:5px;
-color:#D3D3D3;
+color:#3498db;
 line-height:25px;
 }
 
@@ -47,5 +47,9 @@ background-color:#ffffcc;
 
 body{
 margin:0;
-background-color: #f0f0f0; 
+background-color: #F0F0F0; 
 }
+.module-play-list-content{
+	overflow:scroll;
+	height:300px
+	}
