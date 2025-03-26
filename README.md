@@ -2,6 +2,10 @@
 开源阅读3.0的一些订阅资源
 包括书源和订阅源
 实时更新部分失效源
+订阅源总链接：
+'''
+https://cdn.jsdelivr.net/gh/ljun223/reader3@latest/source.json
+'''
 
 部分js用作cdn写源加速
 
