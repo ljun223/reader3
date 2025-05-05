@@ -184,5 +184,34 @@
     "sourceName": "素白白影视",
     "sourceUrl": "https://www.subaibaiys.com",
     "style": "#tab{\nheight:40px;\nmargin-bottom:8px;\n}\n\n.dz {\npadding:5px 0;\noverflow:scroll;\nbackground:#1C1B1E;color:#D3D3D3;;\n}\n\nul{\nmargin:0;\npadding:0;\n}\n\n#tab li {\nfont-size:15px;\nlist-style:none;\nfloat:left;\nheight:30px;\nmargin-right:5px;\ncolor:#D3D3D3;\nline-height:25px;\n}\n\n#tab li.active {\ncolor:#FF8C00;\nborder-bottom:3px solid #FF8C00;\n}\n\nbutton{\noutline:none;\nheight:35px; \nborder:3px solid #1C1B1E ;\nmargin:5px;\nborder-radius:8px;\nmargin-bottom:8px;\nbackground:#1C1B1E;color:#A9A9A9;\nvertical-align:middle; \nwidth:20%;\noverflow:scroll\n}\n\nbutton.upBtn{\nborder:1px solid #FF8C00 ;\nbackground-color:#555555; \n}\n\nbody{\nmargin:0;\nbackground-color: #333333; \n}"
-  }
+  },
+{
+  "articleStyle": 2,
+  "coverDecodeJs": "",
+  "customOrder": 0,
+  "enableJs": true,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "header": "{\"User-Agent\": \"Mozilla/5.0 (Linux; Android 12; 2112123AC) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.104 Mobile Safari/537.36\",\"Referer\": \"https://www.san449.com/\"}",
+  "injectJs": "",
+  "lastUpdateTime": 0,
+  "loadWithBaseUrl": true,
+  "loginUrl": "",
+  "ruleArticles": "ul@li",
+  "ruleContent": "@js:\n`<html>\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no\"/>\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/viewerjs@1.11.2/dist/viewer.css\" rel=\"external nofollow\" rel=\"external nofollow\">\n<script src=\"https://cdn.jsdelivr.net/npm/viewerjs@1.11.2/dist/viewer.min.js\"></script>\n<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.min.js\"></script>\n</head>\n<div class=\"page\"></div>\n<div class =\"dz\"  id=\"dz\" width=\"100%\"></div>\n<div class=\"page\"></div>\n<script>\nfunction i(url){\n$.get(url,function(result){\n\nhtml=result.match(/(<div class=\"(info_imgs|info_text)\">[\\\\s\\\\S]*?)<div align='center'/)[1];\n\n page=result.match(/<div align='center' class='paging'>[\\\\s\\\\S]*?div>/);\n \n page=String(page).replace(/<a/g,\"<button\").replace(/\\a>/g,\"button>\").replace(/<li.*?>|<\\\\/li>|<button>共\\\\d+页: <\\\\/button>|<div.*?>|<\\\\/div>/g,\"\");\n \n alert(html)\n //alert(page)\n\n window.scroll(0,0)\n $(\"#dz\").html(html);\n $(\".page\").html(page);\n});\n}\n$(function(){\nurl=$(this).val();\ni(url);\n});\n$(function(){\n$(document).on(\"click\",\"button\",function(){\n\turl=\"{{source.sourceUrl}}\"+\"plus/\"+$(this).attr(\"href\");\n\t//alert(url)\n\ti(url);\n\t})});\n</script>\n</html>`",
+  "ruleDescription": "",
+  "ruleImage": "img@src",
+  "ruleLink": "a@href",
+  "ruleNextPage": "text.下一页@href",
+  "rulePubDate": "",
+  "ruleTitle": "a@text",
+  "singleUrl": false,
+  "sortUrl": "日本::/plus/list-6100-1.html\n模特::/plus/list-6300-1.html\n私房::/plus/list-6400-1.html\n美腿::/plus/list-6500-1.html\n秀人::/plus/list-6600-1.html\n视频|美女写真::/plus/list-7900-1.html\n视频|YouMei尤美::/plus/list-7010-1.html",
+  "sourceComment": "",
+  "sourceGroup": "图片",
+  "sourceIcon": "https://n.dv67.com/favicon.ico",
+  "sourceName": "新娱乐在线",
+  "sourceUrl": "https://n.dv67.com/",
+  "style": "img{\n\theight:auto;\n\twidth:100%\n\t}\n\tvideo{\n\t\twidth:100%;\n\t\theight:auto;\n\t\t}\n.page{\n\tmargin:10px;\n\t}"
+}
 ]
