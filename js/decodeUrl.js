@@ -43,6 +43,7 @@ function isValidM3U8Url(str) {
     typeof str === "string" &&
     (str.startsWith("http://") || 
      str.startsWith("https://") || 
-     str.includes(".m3u8"))
+     str.includes(".m3u8") ||
+     str.includes(".mp4"))
   );
 }
