@@ -73,9 +73,9 @@ function getParse(json){
 var path="${URL}/static/js/playerconfig.js";
 
 $.get(path,function(data){
-	js=data.match(/player_list=(\{.*?\}),MacPlayerConfig/)[1]
-	from=JSON.parse(json).from;
-	parse=JSON.parse(js)[from].parse;
+	var js=data.match(/player_list=(\{.*?\}),MacPlayerConfig/)[1]
+	var from=JSON.parse(json).from;
+	var parse=JSON.parse(js)[from].parse;
  return parse
 }
 
