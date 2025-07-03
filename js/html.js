@@ -32,8 +32,10 @@ if(src.match(/m3u8|mp4/)){
  var mp = new MuiPlayer({"container": ".muiplayer","src": src,"autoFit":false,"lang": "zh-cn","height":"300px",plugins: [new MuiPlayerMobilePlugin({"key": "01I01I01H01J01L01K01J01I01K01J01H01D01J01G01E","showMenuButton": true,"pageGesture":true,})] });
 
 }else{
-
-iframe='<iframe src="'+src+'" width="350" height="280" id="cciframe" scrolling="no"allowfullscreen="true" webkitallowfullscreen="true" autoplay="true" mozallowfullscreen="true"></iframe>'
+if (!${parse}){
+parse=getParse(json)}else{parse=parse};
+src=parse+src;
+iframe= '<iframe width="100%" height="100%" src="'+src+'" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>';
 
 $(".muiplayer").html(iframe)
 
@@ -67,5 +69,14 @@ index=$(this).index();
 $("${xj}").hide();
 $("${xj}:eq("+index+")").show();
 })
+function getParse(json){
+var path="${URL}/static/js/playerconfig.js";
+
+$.get(path,function(data){
+	js=data.match(/player_list=(\{.*?\}),MacPlayerConfig/)[1]
+	from=JSON.parse(json).from;
+	parse=JSON.parse(js)[from].parse;
+ return parse
+}
 
 </script>`
