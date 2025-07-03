@@ -14,8 +14,8 @@
 
 <div class="muiplayer" id="muiplayer" style="width:100%;height:350"></div>
 
-<div id="tab"><ul>`+li+`</ul></div>
-`+button+`
+<div id="tab"><ul>${li}</ul></div>
+${button}
 
 <script>
 function video(url){
@@ -43,8 +43,8 @@ $(".dz").html(src);
 }
 
 (function(){
-$("`+xj+`").hide();
-$("`+xj+`:eq(0)").show();
+$("${xj}").hide();
+$("${xj}:eq(0)").show();
 $("li:eq(0)").addClass("active")})();
 
 $("button").ready(function(){
@@ -56,7 +56,7 @@ video(url);
 $("button").click(function(){
 $("button").removeClass("upBtn");
 $(this).addClass("upBtn");
-url="`+URL+`"+$(this).attr("href");
+url="${URL}"+$(this).attr("href");
 video(url);
 });
 
@@ -64,8 +64,8 @@ $("li").click(function(){
 $("li").removeClass("active");
 $(this).addClass("active");
 index=$(this).index();
-$("`+xj+`").hide();
-$("`+xj+`:eq("+index+")").show();
+$("${xj}").hide();
+$("${xj}:eq("+index+")").show();
 })
 
 </script>`
