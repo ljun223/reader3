@@ -2,6 +2,8 @@
 
 <script src="//cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ljun223/reader3@main/js/decodeUrl.js"></script>
+
 <link rel="stylesheet" type="text/css" href="https://muiplayer.js.org/css/mui-player.min.css" />
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ljun223/reader3@main/js/mui-player.min.js"></script>
