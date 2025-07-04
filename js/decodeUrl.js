@@ -11,10 +11,10 @@ function decodeM3U8Url(url) {
 
   // 尝试不同的解码组合
   const decodeAttempts = [
-    (str) => decodeURIComponent(str), // 仅 URL-decode
+    (str) => unescape(str), // 仅 URL-decode
     (str) => atob(str),               // 仅 Base64-decode
-    (str) => decodeURIComponent(atob(str)), // 先 Base64-decode，再 URL-decode
-    (str) => atob(decodeURIComponent(str)), // 先 URL-decode，再 Base64-decode
+    (str) => unescape(atob(str)), // 先 Base64-decode，再 URL-decode
+    (str) => atob(unescape(str)), // 先 URL-decode，再 Base64-decode
   ];
 
   for (const decodeFn of decodeAttempts) {
@@ -44,6 +44,7 @@ function isValidM3U8Url(str) {
     (str.startsWith("http://") || 
      str.startsWith("https://") || 
      str.startsWith("://") ||
+     str.includes("url=") ||
      str.includes(".m3u8") ||
      str.includes(".mp4") ||
      str.includes(".htm"))
