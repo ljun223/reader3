@@ -20,23 +20,24 @@ ${button}
 <script>
 function video(url){
   $.get(url,function(result){
-    iframe=String(result).match(/<iframe id="player_if" .*iframe>/);
+  	let iframe,json,src
+  	try{
+  		iframe=String(result).match(/<iframe id="player_if" .*iframe>/);
+    }catch (err){}
+    if (iframe==null){
     json=result.match(/var player.*?=(\{.*?\})</)[1];
-
     src= JSON.parse(json).url;
     src=decodeM3U8Url(src);
+    }else {src=String(iframe).match(/src="(.*?)"/)[1];}
     if(src.match(/m3u8|mp4/)){
-
      	$(".muiplayer").html(""); 	
       var mp = new MuiPlayer({"container": ".muiplayer","src": src,"autoFit":false,"lang": "zh-cn","height":"300px",plugins: [new MuiPlayerMobilePlugin({"key": "01I01I01H01J01L01K01J01I01K01J01H01D01J01G01E","showMenuButton": true,"pageGesture":true,})] });
-
-    }else{
-      if(!iframe){
+     }else{
+    	if(iframe==null){
       main()
       src=parseUrl+src;
-      iframe= '<iframe width="100%" height="100%" src="'+src+'" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>';
-      }else{iframe=iframe};
-
+      iframe= '<iframe width="100%" height="100%" src="'+src+'" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen" webkitallowfullscreen="webkitallowfullscreen"></iframe>';   
+      }else{iframe=iframe}
       $(".muiplayer").html(iframe)
 
     }
