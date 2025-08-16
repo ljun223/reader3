@@ -82,8 +82,6 @@ button {
   font-size: 14px;
   border: none;
   border-radius: 6px;
-  background-color: #4285f4;
-  color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
