@@ -75,7 +75,7 @@ select {
 }
 
 button {
-  flex: 1 1 calc(25% - 8px); /* 基础宽度25%，减去间隙 */
+  flex: 0 0 calc(25% - 8px); /* 基础宽度25%，减去间隙 */
   min-width: 80px; /* 最小宽度防止过小 */
   max-width: 120px; /* 最大宽度防止过大 */
   padding: 10px 5px;
