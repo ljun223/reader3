@@ -54,3 +54,37 @@ ul:not(:first-child){
 	overflow:scroll;
 	height:400px;
 	}
+
+select {
+	 height:38px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 5px;
+}
+
+.parent:has(button) {
+  display: flex;
+  flex-wrap: wrap; /* 允许换行 */
+  gap: 8px; /* 按钮间距 */
+  justify-content: center; /* 居中排列更美观 */
+}
+
+button {
+  flex: 1 1 calc(25% - 8px); /* 基础宽度25%，减去间隙 */
+  min-width: 80px; /* 最小宽度防止过小 */
+  max-width: 120px; /* 最大宽度防止过大 */
+  padding: 10px 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #4285f4;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
