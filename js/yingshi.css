@@ -71,7 +71,7 @@ select {
   display: flex;
   flex-wrap: wrap; /* 允许换行 */
   gap: 8px; /* 按钮间距 */
-  justify-content: center; /* 居中排列更美观 */
+  justify-content: left; 
 }
 
 button {
