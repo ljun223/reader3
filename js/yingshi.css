@@ -67,7 +67,7 @@ select {
   margin: 5px;
 }
 
-.parent:has(button) {
+:has(> button) {
   display: flex;
   flex-wrap: wrap; /* 允许换行 */
   gap: 8px; /* 按钮间距 */
