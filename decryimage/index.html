@@ -59,7 +59,7 @@
     }
     .img-box img { max-width: 100%; max-height: 500px; border-radius: 4px; }
     .base64-box { margin-top: 16px; }
-    textarea { height: 100px; font-family: monospace; font-size: 12px; resize: vertical; }
+    textarea { height: 120px; font-family: monospace; font-size: 12px; resize: vertical; }
     .status { margin-top: 12px; font-size: 13px; color: #666; min-height: 20px; }
     .status.error { color: #ff4d4f; }
     .status.success { color: #52c41a; }
@@ -134,9 +134,10 @@
     </div>
 
     <div class="tips">
-      <strong>当前参数已针对你提供的链接预设好。</strong><br>
-      Key 和 IV 请保持「UTF-8 字符串」选项，不要改成 Hex。<br>
-      如果以后遇到其他加密图，再根据实际情况调整格式。
+      <strong>使用说明：</strong><br>
+      1. Key 和 IV 保持「UTF-8 字符串」选项<br>
+      2. 当前已预设你提供的 Key 和 IV<br>
+      3. 解密成功后会自动显示图片
     </div>
   </div>
 
@@ -166,27 +167,36 @@
 
       try {
         const response = await fetch(url);
-        if (!response.ok) throw new Error(`请求失败: ${response.status}`);
+        if (!response.ok) {
+          throw new Error('请求失败: ' + response.status);
+        }
         const encryptedBuffer = await response.arrayBuffer();
-        statusEl.textContent = `数据获取成功（${encryptedBuffer.byteLength} 字节），正在解密...`;
+        statusEl.textContent = '数据获取成功（' + encryptedBuffer.byteLength + ' 字节），正在解密...';
 
         // 解析 Key
-        let key = keyFormat === 'hex' 
-          ? CryptoJS.enc.Hex.parse(keyStr) 
-          : CryptoJS.enc.Utf8.parse(keyStr);
-
-        // 解析 IV
-        let iv = null;
-        if (mode === 'CBC') {
-          if (!ivStr) throw new Error('CBC 模式必须填写 IV');
-          iv = keyFormat === 'hex' 
-            ? CryptoJS.enc.Hex.parse(ivStr) 
-            : CryptoJS.enc.Utf8.parse(ivStr);
+        var key;
+        if (keyFormat === 'hex') {
+          key = CryptoJS.enc.Hex.parse(keyStr);
+        } else {
+          key = CryptoJS.enc.Utf8.parse(keyStr);
         }
 
-        const encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBuffer);
+        // 解析 IV
+        var iv = null;
+        if (mode === 'CBC') {
+          if (!ivStr) {
+            throw new Error('CBC 模式必须填写 IV');
+          }
+          if (keyFormat === 'hex') {
+            iv = CryptoJS.enc.Hex.parse(ivStr);
+          } else {
+            iv = CryptoJS.enc.Utf8.parse(ivStr);
+          }
+        }
 
-        const decrypted = CryptoJS.AES.decrypt(
+        var encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBuffer);
+
+        var decrypted = CryptoJS.AES.decrypt(
           { ciphertext: encryptedWordArray },
           key,
           {
@@ -196,17 +206,26 @@
           }
         );
 
-        const base64 = decrypted.toString(CryptoJS.enc.Base64);
-        if (!base64) throw new Error('解密结果为空，请检查 Key、IV 或格式是否正确');
+        var base64 = decrypted.toString(CryptoJS.enc.Base64);
+        if (!base64) {
+          throw new Error('解密结果为空，请检查 Key、IV 或格式是否正确');
+        }
 
-        // 自动判断图片类型（简单判断）
-        const header = atob(base64.slice(0, 20));
-        let mime = 'image/jpeg';
-        if (header.startsWith('\x89PNG')) mime = 'image/png';
-        else if (header.startsWith('GIF8')) mime = 'image/gif';
-        else if (header.startsWith('RIFF')) mime = 'image/webp';
+        // 判断图片类型
+        var mime = 'image/jpeg';
+        try {
+          var header = atob(base64.substring(0, 24));
+          if (header.indexOf('PNG') !== -1) {
+            mime = 'image/png';
+          } else if (header.indexOf('GIF8') !== -1) {
+            mime = 'image/gif';
+          } else if (header.indexOf('RIFF') !== -1) {
+            mime = 'image/webp';
+          }
+        } catch (e) {}
 
-        const dataUrl = `data:\( {mime};base64, \){base64}`;
+        // 关键拼接 dataURL（避免模板字符串问题）
+        var dataUrl = 'data:' + mime + ';base64,' + base64;
 
         document.getElementById('preview').src = dataUrl;
         document.getElementById('base64').value = dataUrl;
