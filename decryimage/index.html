@@ -8,7 +8,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #f0f2f5;
       padding: 30px 20px;
       color: #333;
@@ -21,39 +21,18 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       padding: 30px;
     }
-    h1 {
-      font-size: 22px;
-      margin-bottom: 24px;
-      text-align: center;
-      color: #1a1a1a;
-    }
-    .form-group {
-      margin-bottom: 18px;
-    }
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 6px;
-      color: #555;
-    }
+    h1 { font-size: 22px; margin-bottom: 24px; text-align: center; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: #555; }
     input, select, textarea {
       width: 100%;
       padding: 10px 12px;
       border: 1px solid #d9d9d9;
       border-radius: 6px;
       font-size: 14px;
-      transition: border-color 0.2s;
     }
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #1677ff;
-      box-shadow: 0 0 0 2px rgba(22,119,255,0.1);
-    }
-    .row {
-      display: flex;
-      gap: 16px;
-    }
+    input:focus, select:focus { outline: none; border-color: #1677ff; }
+    .row { display: flex; gap: 16px; }
     .row .form-group { flex: 1; }
     button {
       width: 100%;
@@ -65,52 +44,23 @@
       font-size: 15px;
       font-weight: 500;
       cursor: pointer;
-      transition: background 0.2s;
       margin-top: 8px;
     }
     button:hover { background: #4096ff; }
-    button:disabled {
-      background: #bae0ff;
-      cursor: not-allowed;
-    }
-    .result {
-      margin-top: 28px;
-      display: none;
-    }
+    button:disabled { background: #bae0ff; cursor: not-allowed; }
+    .result { margin-top: 28px; display: none; }
     .result.show { display: block; }
-    .result h3 {
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: #333;
-    }
     .img-box {
       border: 1px solid #e8e8e8;
       border-radius: 8px;
       padding: 16px;
       text-align: center;
       background: #fafafa;
-      min-height: 120px;
     }
-    .img-box img {
-      max-width: 100%;
-      max-height: 500px;
-      border-radius: 4px;
-    }
-    .base64-box {
-      margin-top: 16px;
-    }
-    textarea {
-      height: 100px;
-      font-family: monospace;
-      font-size: 12px;
-      resize: vertical;
-    }
-    .status {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #666;
-      min-height: 20px;
-    }
+    .img-box img { max-width: 100%; max-height: 500px; border-radius: 4px; }
+    .base64-box { margin-top: 16px; }
+    textarea { height: 100px; font-family: monospace; font-size: 12px; resize: vertical; }
+    .status { margin-top: 12px; font-size: 13px; color: #666; min-height: 20px; }
     .status.error { color: #ff4d4f; }
     .status.success { color: #52c41a; }
     .tips {
@@ -130,17 +80,17 @@
 
     <div class="form-group">
       <label>图片加密链接 *</label>
-      <input type="text" id="url" placeholder="https://example.com/encrypted-image.bin">
+      <input type="text" id="url" placeholder="https://...">
     </div>
 
     <div class="row">
       <div class="form-group">
         <label>AES Key *</label>
-        <input type="text" id="key" placeholder="密钥（支持字符串或Hex）">
+        <input type="text" id="key" value="f5d965df75336270">
       </div>
       <div class="form-group">
-        <label>IV（CBC模式需要）</label>
-        <input type="text" id="iv" placeholder="初始化向量（可选）">
+        <label>IV *</label>
+        <input type="text" id="iv" value="97b60394abc2fbe1">
       </div>
     </div>
 
@@ -148,21 +98,21 @@
       <div class="form-group">
         <label>加密模式</label>
         <select id="mode">
-          <option value="CBC">AES-CBC</option>
+          <option value="CBC" selected>AES-CBC</option>
           <option value="ECB">AES-ECB</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Key 格式</label>
+        <label>Key / IV 格式</label>
         <select id="keyFormat">
-          <option value="utf8">UTF-8 字符串</option>
+          <option value="utf8" selected>UTF-8 字符串（推荐）</option>
           <option value="hex">Hex 十六进制</option>
         </select>
       </div>
       <div class="form-group">
         <label>Padding</label>
         <select id="padding">
-          <option value="Pkcs7">PKCS7</option>
+          <option value="Pkcs7" selected>PKCS7</option>
           <option value="ZeroPadding">ZeroPadding</option>
           <option value="NoPadding">NoPadding</option>
         </select>
@@ -170,7 +120,6 @@
     </div>
 
     <button id="btn" onclick="decryptImage()">开始解密</button>
-
     <div class="status" id="status"></div>
 
     <div class="result" id="result">
@@ -178,7 +127,6 @@
       <div class="img-box">
         <img id="preview" alt="解密后的图片">
       </div>
-
       <div class="base64-box">
         <label>Base64 数据（可复制）</label>
         <textarea id="base64" readonly></textarea>
@@ -186,12 +134,9 @@
     </div>
 
     <div class="tips">
-      <strong>使用说明：</strong><br>
-      1. 输入加密图片的完整 URL<br>
-      2. 填写 AES Key（常见为 16/24/32 字节，对应 AES-128/192/256）<br>
-      3. CBC 模式必须填写 IV，ECB 模式可不填<br>
-      4. 注意跨域问题：目标服务器需允许 CORS，或使用代理<br>
-      5. 解密成功后会自动显示图片，并输出完整 Base64
+      <strong>当前参数已针对你提供的链接预设好。</strong><br>
+      Key 和 IV 请保持「UTF-8 字符串」选项，不要改成 Hex。<br>
+      如果以后遇到其他加密图，再根据实际情况调整格式。
     </div>
   </div>
 
@@ -220,63 +165,48 @@
       resultEl.classList.remove('show');
 
       try {
-        // 1. 获取加密数据流
         const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error(`请求失败: ${response.status} ${response.statusText}`);
-        }
+        if (!response.ok) throw new Error(`请求失败: ${response.status}`);
         const encryptedBuffer = await response.arrayBuffer();
-        statusEl.textContent = `数据获取成功，大小: ${encryptedBuffer.byteLength} 字节，正在解密...`;
+        statusEl.textContent = `数据获取成功（${encryptedBuffer.byteLength} 字节），正在解密...`;
 
-        // 2. 准备 Key 和 IV
-        let key;
-        if (keyFormat === 'hex') {
-          key = CryptoJS.enc.Hex.parse(keyStr);
-        } else {
-          key = CryptoJS.enc.Utf8.parse(keyStr);
-        }
+        // 解析 Key
+        let key = keyFormat === 'hex' 
+          ? CryptoJS.enc.Hex.parse(keyStr) 
+          : CryptoJS.enc.Utf8.parse(keyStr);
 
+        // 解析 IV
         let iv = null;
         if (mode === 'CBC') {
-          if (!ivStr) {
-            throw new Error('CBC 模式必须填写 IV');
-          }
-          // IV 默认按 Hex 处理，如果长度不对再尝试 Utf8
-          if (/^[0-9a-fA-F]+$/.test(ivStr) && ivStr.length % 2 === 0) {
-            iv = CryptoJS.enc.Hex.parse(ivStr);
-          } else {
-            iv = CryptoJS.enc.Utf8.parse(ivStr);
-          }
+          if (!ivStr) throw new Error('CBC 模式必须填写 IV');
+          iv = keyFormat === 'hex' 
+            ? CryptoJS.enc.Hex.parse(ivStr) 
+            : CryptoJS.enc.Utf8.parse(ivStr);
         }
 
-        // 3. 把 ArrayBuffer 转成 CryptoJS 可处理的格式
         const encryptedWordArray = CryptoJS.lib.WordArray.create(encryptedBuffer);
-
-        // 4. AES 解密
-        const decryptOptions = {
-          mode: CryptoJS.mode[mode],
-          padding: CryptoJS.pad[padding]
-        };
-        if (iv) {
-          decryptOptions.iv = iv;
-        }
 
         const decrypted = CryptoJS.AES.decrypt(
           { ciphertext: encryptedWordArray },
           key,
-          decryptOptions
+          {
+            iv: iv,
+            mode: CryptoJS.mode[mode],
+            padding: CryptoJS.pad[padding]
+          }
         );
 
-        // 5. 转成 Base64
         const base64 = decrypted.toString(CryptoJS.enc.Base64);
+        if (!base64) throw new Error('解密结果为空，请检查 Key、IV 或格式是否正确');
 
-        if (!base64) {
-          throw new Error('解密结果为空，请检查 Key、IV、模式或 Padding 是否正确');
-        }
+        // 自动判断图片类型（简单判断）
+        const header = atob(base64.slice(0, 20));
+        let mime = 'image/jpeg';
+        if (header.startsWith('\x89PNG')) mime = 'image/png';
+        else if (header.startsWith('GIF8')) mime = 'image/gif';
+        else if (header.startsWith('RIFF')) mime = 'image/webp';
 
-        // 6. 显示结果
-        const dataUrl = 'data:image/png;base64,' + base64; // 默认按 png，实际图片格式由内容决定
-        // 也可以尝试 jpeg： data:image/jpeg;base64,
+        const dataUrl = `data:\( {mime};base64, \){base64}`;
 
         document.getElementById('preview').src = dataUrl;
         document.getElementById('base64').value = dataUrl;
